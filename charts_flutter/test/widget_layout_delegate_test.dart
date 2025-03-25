@@ -36,7 +36,8 @@ class FakeBuildableBehavior implements BuildableBehavior {
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    // Return an empty container for testing
+    return Container();
   }
 }
 

@@ -1,5 +1,3 @@
-// @dart=2.9
-
 // Copyright 2018 the Charts project authors. Please see the AUTHORS file
 // for details.
 //
@@ -54,8 +52,8 @@ class FakeBarRenderer<D> extends BarRenderer<D> {
   List<List<BarRendererElement<D>>> elementsPainted = [];
 
   factory FakeBarRenderer({
-    BarRendererConfig config,
-    String rendererId,
+    BarRendererConfig? config,
+    String? rendererId,
   }) {
     config ??= BarRendererConfig();
     rendererId ??= 'bar';
@@ -63,8 +61,8 @@ class FakeBarRenderer<D> extends BarRenderer<D> {
   }
 
   FakeBarRenderer._internal({
-    @required BarRendererConfig config,
-    @required String rendererId,
+    required BarRendererConfig config,
+    required String rendererId,
   }) : super.internal(config: config, rendererId: rendererId);
 
   @override
@@ -76,9 +74,9 @@ class FakeBarRenderer<D> extends BarRenderer<D> {
 }
 
 void main() {
-  BarRenderer renderer;
-  List<MutableSeries<String>> seriesList;
-  List<MutableSeries<String>> groupedStackedSeriesList;
+  late BarRenderer renderer;
+  late List<MutableSeries<String>> seriesList;
+  late List<MutableSeries<String>> groupedStackedSeriesList;
 
   /////////////////////////////////////////
   // Convenience methods for creating mocks.
@@ -96,13 +94,13 @@ void main() {
     return renderer;
   }
 
-  BarRenderer makeRenderer({BarRendererConfig config}) {
+  BarRenderer makeRenderer({BarRendererConfig? config}) {
     final renderer = BarRenderer(config: config);
     _configureBaseRenderer(renderer, true);
     return renderer;
   }
 
-  FakeBarRenderer makeFakeRenderer({BarRendererConfig config}) {
+  FakeBarRenderer makeFakeRenderer({BarRendererConfig? config}) {
     final renderer = FakeBarRenderer(config: config);
     _configureBaseRenderer(renderer, true);
     return renderer;
@@ -245,7 +243,7 @@ void main() {
       expect(series.getAttr(stackKeyKey), equals('__defaultKey__'));
 
       var elementsList = series.getAttr(barElementsKey);
-      expect(elementsList.length, equals(4));
+      expect(elementsList!.length, equals(4));
 
       var element = elementsList[0];
       expect(element.barStackIndex, equals(0));

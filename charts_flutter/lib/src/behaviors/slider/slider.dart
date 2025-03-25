@@ -24,7 +24,7 @@ import 'package:charts_common/common.dart' as common
         SliderListenerCallback,
         SliderStyle,
         SymbolRenderer;
-import 'package:flutter/widgets.dart' show hashValues;
+import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart' show immutable;
 
 import '../chart_behavior.dart' show ChartBehavior, GestureType;
@@ -155,8 +155,8 @@ class Slider<D> extends ChartBehavior<D> {
           ..add(GestureType.onDrag);
         break;
       default:
-        throw new ArgumentError(
-            'Slider does not support the event trigger ' + '"${eventTrigger}"');
+        throw ArgumentError(
+            'Slider does not support the event trigger "${eventTrigger}"');
     }
     return desiredGestures;
   }
@@ -192,7 +192,7 @@ class Slider<D> extends ChartBehavior<D> {
 
   @override
   int get hashCode {
-    return hashValues(eventTrigger, handleRenderer, initialDomainValue, roleId,
+    return Object.hash(eventTrigger, handleRenderer, initialDomainValue, roleId,
         snapToDatum, style, layoutPaintOrder);
   }
 }

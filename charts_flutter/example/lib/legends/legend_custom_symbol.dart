@@ -34,7 +34,7 @@ class IconRenderer extends charts.CustomSymbolRenderer {
     // Lighten the color if the symbol is not enabled
     // Example: If user has tapped on a Series deselecting it.
     if (color != null && !enabled) {
-      color = color.withOpacity(0.26);
+      color = color.withAlpha((0.26 * 255).round());
     }
 
     return new SizedBox.fromSize(
